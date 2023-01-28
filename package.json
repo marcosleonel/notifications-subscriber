@@ -1,0 +1,9 @@
+{
+  "name": "boilerplate-typescript-api",
+  "version": "1.0.0",
+  "description": "A basic boilerplate to start an API with Typescripta, Express and Sequelize",
+  "main": "index.js",
+  "author": "Marcos Leonel",
+  "license": "MIT",
+  "private": false
+}
