@@ -2,9 +2,13 @@ import cluster from 'cluster'
 import os from 'os'
 import { Server } from 'http'
 import app from './app/app'
+import { dataSource } from './db'
 import logger from './logger'
-// TODO: add 'compression'  (gzip)
-// TODO: add montoring tool (prometheus)
+
+dataSource
+  .initialize()
+  .then(() => logger.info('Database has been initialized!'))
+  .catch(error => logger.error('Error during database initialization: ', error))
 
 const port: number = Number(process.env.PORT ?? 8080)
 const host: string = process.env.HOST ?? 'localhost'
@@ -40,7 +44,7 @@ function handleSigterm (): void {
     logger.info('Closing the database connection...')
 
     try {
-      // TODO: Close database conection
+      await dataSource.destroy()
       logger.info('Database connection closed.')
     } catch (error) {
       logger.error('Error during database connection closing.')
