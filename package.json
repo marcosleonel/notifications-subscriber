@@ -3,11 +3,28 @@
   "version": "1.0.0",
   "description": "A notification system that has the ability to receive a message and depending on the category and subscribers, notify these users in the channels they are registered.",
   "main": "index.js",
-  "author": "Marcos Leonel",
+  "author": "Marcos Leonel <leonel.coder@gmail.com>",
   "license": "MIT",
   "private": false,
   "engines": {
     "node": "18.4.0"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "yarn clean && tsc --build",
+    "dev": "NODE_ENV=development nodemon --exec \"node --inspect=0.0.0.0:9229 --require ts-node/register ./src/index.ts\"",
+    "start": "node dist/src/index.js",
+    "test": "NODE_ENV=test jest --coverage=true",
+    "test:watch": "jest --watch --coverage=true",
+    "test:staged": "jest --onlyChanged --coverage=true",
+    "lint:staged": "yarn test:staged",
+    "prepare": "husky install"
+  },
+  "ts-standard": {
+    "project": "./tsconfig.json",
+    "ignore": [
+      "dist"
+    ]
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
@@ -16,6 +33,7 @@
     "@types/jsonwebtoken": "^9.0.1",
     "@types/morgan": "^1.9.4",
     "@types/node": "^18.11.18",
+    "@types/web-push": "^3.3.2",
     "faker": "^6.6.6",
     "husky": "^8.0.3",
     "jest": "^29.4.1",
@@ -41,6 +59,7 @@
     "nodemon": "^2.0.20",
     "pg": "^8.9.0",
     "sequelize": "^6.28.0",
+    "web-push": "^3.5.0",
     "winston": "^3.8.2"
   }
 }
