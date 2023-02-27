@@ -18,10 +18,6 @@ app.use(
   })
 );
 
-/* const apiVersion1 = '/api/v1'
-app.use(apiVersion1, userRouter) */
-
-
 app.use((err, _req, res, _next) => {
   if (err.name === 'UnauthorizedError') {
     res.status(err.status).send({ message: err.message });

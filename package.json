@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-typescript-api",
+  "name": "notifications-subscriber",
   "version": "1.0.0",
-  "description": "A basic boilerplate to start an API with Typescripta, Express and Sequelize",
+  "description": "A notification system that has the ability to receive a message and depending on the category and subscribers, notify these users in the channels they are registered.",
   "main": "index.js",
   "author": "Marcos Leonel",
   "license": "MIT",

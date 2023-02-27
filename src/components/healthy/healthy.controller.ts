@@ -1,1 +1,0 @@
-class HealthyController implements IUserController {}
