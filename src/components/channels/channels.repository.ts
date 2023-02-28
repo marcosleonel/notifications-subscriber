@@ -1,25 +1,25 @@
 import { InsertResult } from 'typeorm';
 
 import { dataSource } from '../../db';
-import { categorySchema } from './categories.schema';
+import { channelSchema } from './channels.schema';
 import {
-  CategoryData,
-  CategoriesRepositoryResults,
-  ICategoriesRepository,
-} from './categories.types';
+  IChannelsRepository,
+  ChannelData,
+  ChannelsRepositoryResults,
+} from './channels.types';
 
-class CategoriesRepository implements ICategoriesRepository {
-  async create (categoryData: CategoryData): Promise<CategoriesRepositoryResults> {
+class ChannelsRepository implements IChannelsRepository {
+  async create (channelData: ChannelData): Promise<ChannelsRepositoryResults> {
     try {
       const categoryInserted: InsertResult = await dataSource
         .createQueryBuilder()
         .insert()
-        .into(categorySchema)
-        .values([{ name: categoryData.name as string }])
+        .into(channelSchema)
+        .values([{ name: channelData.name as string }])
         .execute()
       const success: boolean = !!categoryInserted.identifiers
 
-      if (!success) throw new Error('[CategoriesRepository.create] Unable to create category')
+      if (!success) throw new Error('[ChannelsRepository.create] Unable to create channel')
 
       return {
         success,
@@ -34,15 +34,15 @@ class CategoriesRepository implements ICategoriesRepository {
     }
   }
 
-  async getAll (): Promise<CategoriesRepositoryResults> {
+  async getAll (): Promise<ChannelsRepositoryResults> {
     try {
       const categoriesFound = await dataSource
-        .getRepository(categorySchema)
+        .getRepository(channelSchema)
         .createQueryBuilder('categories')
         .getMany()
       const success: boolean = !!categoriesFound
 
-      if (!success) throw new Error('[CategoriesRepository.getAll] Unable to get the list of categories')
+      if (!success) throw new Error('[ChannelsRepository.getAll] Unable to get the list of categories')
       
       return {
         success,
@@ -58,4 +58,4 @@ class CategoriesRepository implements ICategoriesRepository {
   }
 }
 
-export default CategoriesRepository
+export default ChannelsRepository

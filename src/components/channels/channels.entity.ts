@@ -1,10 +1,10 @@
-import { CategoryData } from "./categories.types"
+import { ChannelData } from './channels.types'
 
-class Categories {
+class Channels {
   readonly name: string
 
-  constructor (categoryData: CategoryData) {
-    this.name = categoryData.name
+  constructor (channelData: ChannelData) {
+    this.name = channelData.name
     Object.freeze(this)
   }
 
@@ -19,4 +19,4 @@ class Categories {
   }
 }
 
-export default Categories
+export default Channels

@@ -1,9 +1,8 @@
 import { EntitySchema, EntitySchemaOptions } from 'typeorm'
+import { ChannelData } from './channels.types'
 
-import { CategoryData } from './categories.types'
-
-export const categorySchema = new EntitySchema({
-  name: 'categories',
+export const channelSchema = new EntitySchema({
+  name: 'channels',
   columns: {
     id: {
       type: 'uuid',
@@ -33,7 +32,7 @@ export const categorySchema = new EntitySchema({
       type: 'many-to-many',
       target: 'users',
       cascade: true,
-      inverseSide: 'categories',
+      inverseSide: 'channels',
     },
   }
-} as EntitySchemaOptions<CategoryData>)
+} as EntitySchemaOptions<ChannelData>)
