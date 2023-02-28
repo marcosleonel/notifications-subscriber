@@ -11,19 +11,19 @@ import {
 class ChannelsRepository implements IChannelsRepository {
   async create (channelData: ChannelData): Promise<ChannelsRepositoryResults> {
     try {
-      const categoryInserted: InsertResult = await dataSource
+      const channelInserted: InsertResult = await dataSource
         .createQueryBuilder()
         .insert()
         .into(channelSchema)
         .values([{ name: channelData.name as string }])
         .execute()
-      const success: boolean = !!categoryInserted.identifiers
+      const success: boolean = !!channelInserted.identifiers
 
       if (!success) throw new Error('[ChannelsRepository.create] Unable to create channel')
 
       return {
         success,
-        data: categoryInserted.identifiers
+        data: channelInserted.identifiers
       }
     } catch (error: unknown) {
       return {
@@ -36,17 +36,17 @@ class ChannelsRepository implements IChannelsRepository {
 
   async getAll (): Promise<ChannelsRepositoryResults> {
     try {
-      const categoriesFound = await dataSource
+      const channelsFound = await dataSource
         .getRepository(channelSchema)
-        .createQueryBuilder('categories')
+        .createQueryBuilder('channels')
         .getMany()
-      const success: boolean = !!categoriesFound
+      const success: boolean = !!channelsFound
 
-      if (!success) throw new Error('[ChannelsRepository.getAll] Unable to get the list of categories')
-      
+      if (!success) throw new Error('[ChannelsRepository.getAll] Unable to get the list of channels')
+
       return {
         success,
-        data: categoriesFound
+        data: channelsFound
       }
     } catch (error: unknown) {
       return {

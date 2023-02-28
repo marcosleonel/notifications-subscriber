@@ -8,7 +8,7 @@ export type ChannelData = {
 export type ChannelsRepositoryResults = {
   success: boolean,
   data: Object | Object[] | ChannelData | null
-  error?: unknown | null 
+  error?: unknown | null
 }
 
 export interface IChannelsRepository {

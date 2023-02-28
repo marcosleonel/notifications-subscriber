@@ -14,15 +14,15 @@ class ChannelsUseCases implements IChannelsUseCases {
   }
 
   async addChannel (channelData: ChannelData): Promise<ChannelsRepositoryResults> {
-    const newUser = new Users(channelData)
-    const validation = newUser.validate()
+    const newChannel = new Users(channelData)
+    const validation = newChannel.validate()
 
     if (validation.errors && validation.errors.length) return validation
 
     try {
       const { data, error, success } = await this.channelRepository.create(channelData)
 
-      if (!success) throw new Error(`[ChannelsUseCases.addChannel] Unable to add category: ${error}`)
+      if (!success) throw new Error(`[ChannelsUseCases.addChannel] Unable to add channel: ${error}`)
 
       return { success, data }
     } catch (error: unknown) {
