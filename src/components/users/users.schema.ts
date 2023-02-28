@@ -11,6 +11,12 @@ export const userSchema = new EntitySchema({
       generated: 'uuid',
       unique: true,
     },
+    name: { 
+      type: 'varchar',
+      nullable: false,
+      unique: false,
+      length: 255,
+    },
     email: { 
       type: 'varchar',
       nullable: false,
@@ -49,11 +55,11 @@ export const userSchema = new EntitySchema({
     }
   },
   relations: {
-    notifications: {
-      type: 'one-to-many',
+    users: {
+      type: 'many-to-many',
       target: 'notifications',
       cascade: false,
-      inverseSide: 'user'
+      inverseSide: 'categories',
     },
     categories: {
       type: 'many-to-many',
