@@ -17,7 +17,8 @@ const dataSource = new DataSource({
   entities: ['src/**/*/*.schema.ts'],
   migrations: ['src/db/migrations/*.ts'],
   logging: true,
-  synchronize: true
+  synchronize: true,
+  cache: true,
 })
 
 export default dataSource

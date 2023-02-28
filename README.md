@@ -1,6 +1,6 @@
-# [BOILERPLATE] TYPESCRIPT API
+# NOTIFICATION SUBSCRIBER
 
-A basic boilerplate to start an API with Typescripta, Express and Sequelize.
+A notification system that has the ability to receive a message and depending on the category and subscribers, notify these users in the channels they are registered.
 
 ## FOLDER STRUCTURE
 
@@ -28,6 +28,7 @@ server
 * **component.integration.spec**: integration test for the route.
 
 ## TODO
+[ ] Sent notifications concurrently using Promise.all
 
 ### SERVER
 
