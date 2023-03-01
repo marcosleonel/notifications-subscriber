@@ -6,6 +6,7 @@ import cors from 'cors'
 
 import logger from '../logger'
 import messagesRouter from '../components/messages/messages.routes';
+import channelsRouter from '../components/channels/channels.routes';
 
 const app = express()
 
@@ -21,6 +22,7 @@ app.use(
 
 const apiVersion1 = '/api/v1'
 app.use(apiVersion1, messagesRouter)
+app.use(apiVersion1, channelsRouter)
 
 app.use((err, _req, res, _next) => {
   if (err.name === 'UnauthorizedError') {
