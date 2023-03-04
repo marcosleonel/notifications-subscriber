@@ -1,8 +1,8 @@
 import { MessageData } from './messages.types';
 class Messages {
-  readonly category: string
-  readonly categoriesAvailable: string[]
-  readonly text: string
+  category: string
+  categoriesAvailable: string[]
+  text: string
 
   constructor (messageData: MessageData, categoriesAvailable: string[]) {
     this.text = messageData.text

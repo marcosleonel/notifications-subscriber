@@ -28,11 +28,15 @@ export const messageSchema = new EntitySchema({
     }
   },
   relations: {
+    users: {
+      type: 'many-to-many',
+      target: 'users',
+      cascade: true,
+    },
     categories: {
       type: 'many-to-many',
       target: 'categories',
       cascade: false,
-      inverseSide: 'messages',
     },
   }
 } as EntitySchemaOptions<MessageData>)

@@ -1,20 +1,27 @@
 import Messages from './messages.entity'
+import { ICategoriesRepository } from '../categories/categories.types'
 import {
   IMessagesUseCases,
   IMessagesRepository,
   MessagesRepositoryResults,
   MessageData,
-} from './messages.types';
+} from './messages.types'
 
 class MessagesUseCases implements IMessagesUseCases {
+  readonly categoryRepository: ICategoriesRepository
   readonly messageRepository: IMessagesRepository
 
-  constructor(repository: IMessagesRepository) {
-    this.messageRepository = repository
+  constructor(messageRepository: IMessagesRepository, categoryRepository: ICategoriesRepository) {
+    this.messageRepository = messageRepository
+    this.categoryRepository = categoryRepository
   }
 
   async addMessage (messageData: MessageData): Promise<MessagesRepositoryResults> {
-    const newMessage = new Messages(messageData, []) // TODO: get categories and pass here
+    const categoriesFound = await this.categoryRepository.getAll()
+    const categories = categoriesFound.data?.length
+      ? categoriesFound.data.map((category) => category.name)
+      : []
+    const newMessage = new Messages(messageData, categories)
     const validation = newMessage.validate()
 
     if (validation.errors && validation.errors.length) return validation

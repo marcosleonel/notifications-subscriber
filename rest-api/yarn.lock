@@ -334,6 +334,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@faker-js/faker@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-7.6.0.tgz#9ea331766084288634a9247fcd8b84f16ff4ba07"
+  integrity sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.8.tgz"
@@ -1848,6 +1853,13 @@ eastasianwidth@^0.2.0:
   resolved "https://registry.npmjs.org/eastasianwidth/-/eastasianwidth-0.2.0.tgz"
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
+ebec@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/ebec/-/ebec-0.2.1.tgz#0ac6b6c0e963043bc1d785fc11354522387b7c22"
+  integrity sha512-JFYoMVXROnfl0k53pir1/I1OyEtObxObz5og62aIiiCzlIK82lQLq80fJS8hHyFr0Xh5p4ZsBBn+iyk8Tt0H1A==
+  dependencies:
+    smob "^0.1.0"
+
 ecdsa-sig-formatter@1.0.11:
   version "1.0.11"
   resolved "https://registry.npmjs.org/ecdsa-sig-formatter/-/ecdsa-sig-formatter-1.0.11.tgz"
@@ -2621,6 +2633,16 @@ glob@^8.1.0:
     inherits "2"
     minimatch "^5.0.1"
     once "^1.3.0"
+
+glob@^9.0.1:
+  version "9.2.1"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-9.2.1.tgz#f47e34e1119e7d4f93a546e75851ba1f1e68de50"
+  integrity sha512-Pxxgq3W0HyA3XUvSXcFhRSs+43Jsx0ddxcFrbjxNGkL2Ak5BAUBxLqI5G6ADDeCHLfzzXFhe0b1yYcctGmytMA==
+  dependencies:
+    fs.realpath "^1.0.0"
+    minimatch "^7.4.1"
+    minipass "^4.2.4"
+    path-scurry "^1.6.1"
 
 globals@^11.1.0:
   version "11.12.0"
@@ -3437,6 +3459,11 @@ jest@^29.4.1:
     import-local "^3.0.2"
     jest-cli "^29.4.1"
 
+jiti@^1.17.1:
+  version "1.17.1"
+  resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.17.1.tgz#264daa43ee89a03e8be28c3d712ccc4eb9f1e8ed"
+  integrity sha512-NZIITw8uZQFuzQimqjUxIrIcEdxYDFIe/0xYfIlVXTkiBjjyBEvgasj5bb0/cHtPRD/NziPbT312sFrkI5ALpw==
+
 js-sdsl@^4.1.4:
   version "4.3.0"
   resolved "https://registry.npmjs.org/js-sdsl/-/js-sdsl-4.3.0.tgz"
@@ -3662,6 +3689,15 @@ locate-path@^7.1.0:
   dependencies:
     p-locate "^6.0.0"
 
+locter@^1.0.3:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/locter/-/locter-1.0.6.tgz#45008a00a08285800987edd8db3704b3a569ccf3"
+  integrity sha512-Xg2CwX1byVMky+xnVPV9HHAQxCvBMekdfOLEl0LtF4FuBA+DuUXVRzYRQyqAcTUnUDnfdMbpp0p85fpWUxdxCQ==
+  dependencies:
+    ebec "^0.2.1"
+    glob "^9.0.1"
+    jiti "^1.17.1"
+
 lodash.memoize@4.x:
   version "4.1.2"
   resolved "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz"
@@ -3718,6 +3754,11 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
+
+lru-cache@^7.14.1:
+  version "7.18.1"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-7.18.1.tgz#4716408dec51d5d0104732647f584d1f6738b109"
+  integrity sha512-8/HcIENyQnfUTCDizRu9rrDyG6XG/21M4X7/YEGZeD76ZJilFPAUVb/2zysFf7VVO1LEjCDFyHp8pMMvozIrvg==
 
 make-dir@^3.0.0, make-dir@^3.1.0:
   version "3.1.0"
@@ -3822,6 +3863,13 @@ minimatch@^5.0.1:
   dependencies:
     brace-expansion "^2.0.1"
 
+minimatch@^7.4.1:
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-7.4.2.tgz#157e847d79ca671054253b840656720cb733f10f"
+  integrity sha512-xy4q7wou3vUoC9k1xGTXc+awNdGaGVHtFUaey8tiX4H1QRc04DZ/rmDFwNm2EBsuYEhAZ6SgMmYf3InGY6OauA==
+  dependencies:
+    brace-expansion "^2.0.1"
+
 minimist@^1.2.0, minimist@^1.2.5, minimist@^1.2.6:
   version "1.2.7"
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.7.tgz"
@@ -3840,6 +3888,11 @@ minipass@^4.0.0:
   integrity sha512-g2Uuh2jEKoht+zvO6vJqXmYpflPqzRBT+Th2h01DKh5z7wbY/AZ2gCQ78cP70YoHPyFdY30YBV5WxgLOEwOykw==
   dependencies:
     yallist "^4.0.0"
+
+minipass@^4.0.2, minipass@^4.2.4:
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-4.2.4.tgz#7d0d97434b6a19f59c5c3221698b48bbf3b2cd06"
+  integrity sha512-lwycX3cBMTvcejsHITUgYj6Gy6A7Nh4Q6h9NP4sTHY1ccJlC7yKzDmiShEHsJ16Jf1nKGDEaiHxiltsJEvk0nQ==
 
 minizlib@^2.1.1:
   version "2.1.2"
@@ -4269,6 +4322,14 @@ path-parse@^1.0.7:
   resolved "https://registry.npmjs.org/path-parse/-/path-parse-1.0.7.tgz"
   integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
 
+path-scurry@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/path-scurry/-/path-scurry-1.6.1.tgz#dab45f7bb1d3f45a0e271ab258999f4ab7e23132"
+  integrity sha512-OW+5s+7cw6253Q4E+8qQ/u1fVvcJQCJo/VFD8pje+dbJCF1n5ZRMV2AEHbGp+5Q7jxQIYJxkHopnj6nzdGeZLA==
+  dependencies:
+    lru-cache "^7.14.1"
+    minipass "^4.0.2"
+
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-0.1.7.tgz"
@@ -4465,6 +4526,13 @@ range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.npmjs.org/range-parser/-/range-parser-1.2.1.tgz"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
+
+rapiq@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/rapiq/-/rapiq-0.8.0.tgz#f9eee0bf5bf41b92916750cc6b066c0928a8c2b9"
+  integrity sha512-qAWUHJP++IDKE9ul9mwXoix45a6Hne3wDiqTd7BhoRNVOQv2gQvAlCOWCQCNTbQA/Ia9jW5ugcOmbd4eRGklSQ==
+  dependencies:
+    smob "^0.1.0"
 
 raw-body@2.5.1:
   version "2.5.1"
@@ -4827,6 +4895,11 @@ slice-ansi@^5.0.0:
   dependencies:
     ansi-styles "^6.0.0"
     is-fullwidth-code-point "^4.0.0"
+
+smob@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/smob/-/smob-0.1.0.tgz#d61b307208d2510b3faf98c166ffe4e9e94f17a2"
+  integrity sha512-u6ezVF7hN3AxA1onkbMsl46XZr1HYrtMksmckSVpkLI8bYJ5I34kHMvDZk8qNCfA0y54VnhWqCoU6DQMMStzpw==
 
 source-map-support@0.5.13:
   version "0.5.13"
@@ -5310,6 +5383,17 @@ typed-array-length@^1.0.4:
     call-bind "^1.0.2"
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
+
+typeorm-extension@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/typeorm-extension/-/typeorm-extension-2.5.2.tgz#56dc182ea5aa0dc148ee08dfe05d8d7de6368914"
+  integrity sha512-r7WAFFG00Zu3L/FiE3697w4PLjzfGpkelq5geQJE27do2Deja9UwdyqVIWT3owL8IbEPpqk1O2x1dJynoEumOw==
+  dependencies:
+    "@faker-js/faker" "^7.6.0"
+    locter "^1.0.3"
+    rapiq "^0.8.0"
+    reflect-metadata "^0.1.13"
+    yargs "^17.6.2"
 
 typeorm@^0.3.12:
   version "0.3.12"

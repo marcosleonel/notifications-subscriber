@@ -2,9 +2,9 @@ import {
   ICategoriesRepository,
   ICategoriesUseCases,
   CategoryData,
-  CategoriesRepositoryResults
 } from './categories.types'
 import Users from './categories.entity'
+import { CreateResults, GetAllResults } from './categories.types';
 
 class CategoriesUseCases implements ICategoriesUseCases {
   readonly categoryRepository: ICategoriesRepository
@@ -13,11 +13,13 @@ class CategoriesUseCases implements ICategoriesUseCases {
     this.categoryRepository = repository
   }
 
-  async addCategory (categoryData: CategoryData): Promise<CategoriesRepositoryResults> {
+  async addCategory (categoryData: CategoryData): Promise<CreateResults> {
     const newUser = new Users(categoryData)
     const validation = newUser.validate()
 
-    if (validation.errors && validation.errors.length) return validation
+    if (validation.errors && validation.errors.length) {
+      throw new Error(`Validation Error: ${validation}`)
+    }
 
     try {
       const { data, error, success } = await this.categoryRepository.create(categoryData)
@@ -34,7 +36,7 @@ class CategoriesUseCases implements ICategoriesUseCases {
     }
   }
 
-  async getAllCategories (): Promise<CategoriesRepositoryResults> {
+  async getAllCategories (): Promise<GetAllResults> {
     try {
       const { data, error, success } = await this.categoryRepository.getAll()
 

@@ -23,5 +23,5 @@
     "types": ["node", "jest"]
   },
   "exclude": ["dist", "node_modules"],
-  "include": ["src/**/*/*.ts", "src/*.ts", "*.ts"]
+  "include": ["src/**/*/*.ts", "src/*.ts", "*.ts", "server/jest.config.ts"]
 }

@@ -1,4 +1,8 @@
 import type { Request, Response } from 'express'
+import type { Logger } from 'winston'
+import { ICategoriesRepository } from '../categories/categories.types';
+
+export type WinstonLogger = Logger
 
 export type MessageData = {
   id?: string | undefined | unknown
@@ -20,6 +24,7 @@ export interface IMessagesRepository {
 }
 
 export interface IMessagesUseCases {
+  readonly categoryRepository: ICategoriesRepository
   readonly messageRepository: IMessagesRepository
   addMessage: (data: MessageData) => Promise<MessagesRepositoryResults>
   getAllMessages: () => Promise<MessagesRepositoryResults>

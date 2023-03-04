@@ -32,7 +32,6 @@ export const channelSchema = new EntitySchema({
       type: 'many-to-many',
       target: 'users',
       cascade: true,
-      inverseSide: 'channels',
     },
   }
 } as EntitySchemaOptions<ChannelData>)

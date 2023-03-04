@@ -11,14 +11,19 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "yarn clean && tsc --build",
+    "build": "yarn clean && ./node_modules/.bin/tsc --build",
     "dev": "NODE_ENV=development nodemon --exec \"node --inspect=0.0.0.0:9229 --require ts-node/register ./src/index.ts\"",
     "start": "node dist/src/index.js",
-    "test": "NODE_ENV=test jest --coverage=true",
-    "test:watch": "jest --watch --coverage=true",
-    "test:staged": "jest --onlyChanged --coverage=true",
+    "start:docker": "yarn build && yarn dev",
+    "test": "NODE_ENV=test ./node_modules/.bin/jest --coverage=true",
+    "test:watch": "./node_modules/.bin/jest --watch --coverage=true",
+    "test:staged": "./node_modules/.bin/jest --onlyChanged --coverage=true",
     "lint:staged": "yarn test:staged",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install",
+    "migration:generate": "./node_modules/.bin/typeorm migration:generate -d ./src/db/data-source.ts -n",
+    "migration:run": "./node_modules/.bin/typeorm migration:run -d ./src/db/data-source.ts",
+    "migration:revert": "./node_modules/.bin/typeorm migration:revert -d ./src/db/data-source.ts",
+    "seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed -d ./src/db/data-source.ts"
   },
   "ts-standard": {
     "project": "./tsconfig.json",
@@ -60,6 +65,7 @@
     "pg": "^8.9.0",
     "sequelize": "^6.28.0",
     "typeorm": "^0.3.12",
+    "typeorm-extension": "^2.5.2",
     "web-push": "^3.5.0",
     "winston": "^3.8.2"
   }

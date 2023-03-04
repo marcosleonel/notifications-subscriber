@@ -30,19 +30,6 @@ export const userSchema = new EntitySchema({
       unique: true,
       length: 255,
     },
-    subscribed: {
-      name: 'subscribed',
-      type: 'boolean',
-      nullable: false,
-      default: false
-    },
-    channels: {
-      name: 'subscription_id',
-      type: 'varchar',
-      nullable: true,
-      unique: true,
-      length: 255
-    },
     createdAt: {
       name: 'created_at',
       type: 'timestamp with time zone',
@@ -55,13 +42,12 @@ export const userSchema = new EntitySchema({
     }
   },
   relations: {
-    users: {
+    messages: {
       type: 'many-to-many',
-      target: 'notifications',
+      target: 'messages',
       cascade: false,
-      inverseSide: 'categories',
     },
-    categories: {
+    subscribed: {
       type: 'many-to-many',
       target: 'categories',
       cascade: false,

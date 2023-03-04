@@ -1,15 +1,16 @@
 import { InsertResult } from 'typeorm';
 
 import { dataSource } from '../../db';
-import { categorySchema } from './categories.schema';
+import { categorySchema } from './categories.schema'
+import { GetAllResults } from './categories.types';
 import {
   CategoryData,
-  CategoriesRepositoryResults,
+  CreateResults,
   ICategoriesRepository,
 } from './categories.types';
 
 class CategoriesRepository implements ICategoriesRepository {
-  async create (categoryData: CategoryData): Promise<CategoriesRepositoryResults> {
+  async create (categoryData: CategoryData): Promise<CreateResults> {
     try {
       const categoryInserted: InsertResult = await dataSource
         .createQueryBuilder()
@@ -34,7 +35,7 @@ class CategoriesRepository implements ICategoriesRepository {
     }
   }
 
-  async getAll (): Promise<CategoriesRepositoryResults> {
+  async getAll (): Promise<GetAllResults> {
     try {
       const categoriesFound = await dataSource
         .getRepository(categorySchema)

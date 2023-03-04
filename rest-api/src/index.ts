@@ -1,20 +1,21 @@
 import cluster from 'cluster'
 import os from 'os'
 import { Server } from 'http'
+import 'reflect-metadata'
 import app from './app/app'
 import { dataSource } from './db'
 import logger from './logger'
-
-dataSource
-  .initialize()
-  .then(() => logger.info('Database has been initialized!'))
-  .catch(error => logger.error('Error during database initialization: ', error))
 
 const port: number = Number(process.env.PORT ?? 8080)
 const host: string = process.env.HOST ?? 'localhost'
 let server: Server
 
 if (cluster.isPrimary) {
+  dataSource
+    .initialize()
+    .then(() => logger.info('Database has been initialized!'))
+    .catch(error => logger.error('Error during database initialization: ', error))
+
   const numOfCpus = os.cpus().length
 
   for (let i = 0; i <= numOfCpus; i++) {
