@@ -1,7 +1,7 @@
-import { InsertResult } from 'typeorm';
+import { InsertResult } from 'typeorm'
 
-import { dataSource } from '../../db';
-import { channelSchema } from './channels.schema';
+import { dataSource } from '../../db'
+import { ChannelModel } from './channels.model'
 import {
   IChannelsRepository,
   ChannelData,
@@ -14,7 +14,7 @@ class ChannelsRepository implements IChannelsRepository {
       const channelInserted: InsertResult = await dataSource
         .createQueryBuilder()
         .insert()
-        .into(channelSchema)
+        .into(ChannelModel)
         .values([{ name: channelData.name as string }])
         .execute()
       const success: boolean = !!channelInserted.identifiers
@@ -37,7 +37,7 @@ class ChannelsRepository implements IChannelsRepository {
   async getAll (): Promise<ChannelsRepositoryResults> {
     try {
       const channelsFound = await dataSource
-        .getRepository(channelSchema)
+        .getRepository(ChannelModel)
         .createQueryBuilder('channels')
         .getMany()
       const success: boolean = !!channelsFound

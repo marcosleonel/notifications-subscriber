@@ -1,4 +1,7 @@
 import { ObjectLiteral } from 'typeorm'
+import type { Response, Request } from 'express'
+
+import { Category } from './categories.model'
 
 export type CategoryData = {
   id?: string | undefined | unknown
@@ -13,11 +16,11 @@ export type RepositoryResults = {
 }
 
 export type CreateResults = RepositoryResults & {
-  data: ObjectLiteral[] | null
+  data: string | null
 }
 
 export type GetAllResults = RepositoryResults & {
-  data: CategoryData[] | null
+  data: Category[] | null
 }
 
 export interface ICategoriesRepository {
@@ -29,4 +32,9 @@ export interface ICategoriesUseCases {
   readonly categoryRepository: ICategoriesRepository
   addCategory: (data: CategoryData) => Promise<CreateResults>
   getAllCategories: () => Promise<GetAllResults>
+}
+
+export interface ICategoriesController {
+  create: (req: Request, res: Response) => Promise<Response>
+  getAll: (_, res: Response) => Promise<Response>
 }

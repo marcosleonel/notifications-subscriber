@@ -34,11 +34,27 @@ class UsersUseCases implements IUserUseCases {
     }
   }
 
+  async getAllUsers (): Promise<UserRepositoryResults> {
+    try {
+      const { data, error, success } = await this.userRepository.findAll()
+
+      if (!success) throw new Error(`[UsersUseCases.getAllUsers] Unable to get users: ${error}`)
+
+      return { success, data }
+    } catch (error: unknown) {
+      return {
+        success: false,
+        data: null,
+        error
+      }
+    }
+  }
+
   async getUsersByCategory (category: string): Promise<UserRepositoryResults> {
     try {
       const { data, error, success } = await this.userRepository.findByCategories([category])
 
-      if (!success) throw new Error(` [UsersUseCases.getUsersByCategory] Unable to get user: ${error}`)
+      if (!success) throw new Error(`[UsersUseCases.getUsersByCategory] Unable to get user: ${error}`)
 
       return { success, data }
     } catch (error: unknown) {

@@ -6,6 +6,7 @@ import logger from '../../logger'
 const channelsRouter = Router()
 const channelsController = new ChannelsController(logger)
 
-channelsRouter.post('./messages', channelsController.create)
+channelsRouter.get('/channels', channelsController.getAll)
+channelsRouter.post('/channels', channelsController.create)
 
 export default channelsRouter

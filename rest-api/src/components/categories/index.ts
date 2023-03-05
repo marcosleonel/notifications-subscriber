@@ -1,5 +1,5 @@
-import { categorySchema } from './categories.schema'
+import { Category } from './categories.model'
 
 export default {
-  categorySchema,
+  Category,
 }

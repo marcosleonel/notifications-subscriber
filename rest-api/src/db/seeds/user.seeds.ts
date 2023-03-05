@@ -1,27 +1,24 @@
 import { Seeder, SeederFactoryManager } from 'typeorm-extension'
 import { DataSource } from 'typeorm'
-import { userSchema } from '../../components/users/users.schema'
-import { categorySchema } from '../../components/categories/categories.schema'
-import { channelSchema } from '../../components/channels/channels.schema'
-import Categories from '../../components/categories/categories.entity';
+import { UserModel } from '../../components/users/users.model'
+import { Category } from '../../components/categories/categories.model'
+import { ChannelModel } from '../../components/channels/channels.model'
 
 export default class UserSeeder implements Seeder {
     public async run(
         dataSource: DataSource,
-        factoryManager: SeederFactoryManager
+        _factoryManager: SeederFactoryManager
     ): Promise<any> {
-        // TODO: Get the existing categories  and channels in the database to save them here
-        // @see https://typeorm.io/many-to-many-relations#saving-many-to-many-relations
         const categoriesRepository =  await dataSource
-            .getRepository(categorySchema)
+            .getRepository(Category)
             .createQueryBuilder()
             .getMany()
         const channelsRepository =  await dataSource
-            .getRepository(channelSchema)
+            .getRepository(ChannelModel)
             .createQueryBuilder()
             .getMany()
 
-        const usersRepository = await dataSource.getRepository(userSchema)
+        const usersRepository = await dataSource.getRepository(UserModel)
         await usersRepository
             .createQueryBuilder()
             .insert()
@@ -48,7 +45,7 @@ export default class UserSeeder implements Seeder {
                     channels: [categoriesRepository.pop()],
                 },
             ])
-            .orUpdate(["name"])
+            .orUpdate(['name'])
             .execute()
     }
 }

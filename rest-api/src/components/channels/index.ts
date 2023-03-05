@@ -1,5 +1,5 @@
-import { channelSchema } from './channels.schema'
+import { ChannelModel } from './channels.model'
 
 export default {
-  channelSchema,
+  ChannelModel,
 }

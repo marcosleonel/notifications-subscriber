@@ -1,7 +1,7 @@
 import messagesRouter from './messages.routes'
-import { messageSchema } from './messages.schema';
+import { MessageModel } from './messages.model';
 
 export {
   messagesRouter,
-  messageSchema,
+  MessageModel,
 }

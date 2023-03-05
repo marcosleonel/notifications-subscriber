@@ -1,30 +1,31 @@
-import { InsertResult } from 'typeorm';
-
-import { dataSource } from '../../db';
-import { categorySchema } from './categories.schema'
-import { GetAllResults } from './categories.types';
+import { dataSource } from '../../db'
+import { Category } from './categories.model'
+import { GetAllResults } from './categories.types'
 import {
   CategoryData,
   CreateResults,
   ICategoriesRepository,
-} from './categories.types';
+} from './categories.types'
 
 class CategoriesRepository implements ICategoriesRepository {
   async create (categoryData: CategoryData): Promise<CreateResults> {
     try {
-      const categoryInserted: InsertResult = await dataSource
+      const category = new Category()
+      category.name = categoryData.name as string
+      const categoryCreated = await dataSource.manager.save(category)
+/*       const categoryInserted: InsertResult = await dataSource
         .createQueryBuilder()
         .insert()
-        .into(categorySchema)
+        .into(Category)
         .values([{ name: categoryData.name as string }])
-        .execute()
-      const success: boolean = !!categoryInserted.identifiers
+        .execute() */
+      const success: boolean = !!categoryCreated.id
 
       if (!success) throw new Error('[CategoriesRepository.create] Unable to create category')
 
       return {
         success,
-        data: categoryInserted.identifiers
+        data: categoryCreated.id
       }
     } catch (error: unknown) {
       return {
@@ -38,7 +39,7 @@ class CategoriesRepository implements ICategoriesRepository {
   async getAll (): Promise<GetAllResults> {
     try {
       const categoriesFound = await dataSource
-        .getRepository(categorySchema)
+        .getRepository(Category)
         .createQueryBuilder('categories')
         .getMany()
       const success: boolean = !!categoriesFound

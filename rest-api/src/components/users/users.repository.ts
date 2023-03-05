@@ -1,6 +1,6 @@
 import { dataSource } from '../../db';
 import { UserData, UserRepositoryResults, IUsersRepository } from './users.types';
-import { userSchema } from './users.schema';
+import { UserModel } from './users.model';
 import { InsertResult } from 'typeorm';
 
 class UsersRepository implements IUsersRepository {
@@ -10,7 +10,7 @@ class UsersRepository implements IUsersRepository {
       const userInserted: InsertResult = await dataSource
         .createQueryBuilder()
         .insert()
-        .into(userSchema)
+        .into(UserModel)
         .values([{
           name: name as string,
           email: email as string,
@@ -34,10 +34,30 @@ class UsersRepository implements IUsersRepository {
     }
   }
 
+  async findAll (): Promise<UserRepositoryResults> {
+    try {
+      const usersFound = await dataSource
+        .getRepository(UserModel)
+        .createQueryBuilder('users')
+        .getMany()
+
+      return {
+        success: usersFound && !!usersFound.length,
+        data: usersFound,
+      }
+    } catch (error: unknown) {
+      return {
+        success: false,
+        data: null,
+        error
+      }
+    }
+  }
+
   async findByCategories (categories: string[]): Promise<UserRepositoryResults> {
     try {
       const usersFound = await dataSource
-        .getRepository(userSchema)
+        .getRepository(UserModel)
         .createQueryBuilder('users')
         .distinct(true)
         .innerJoinAndSelect(

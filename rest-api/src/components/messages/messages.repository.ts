@@ -1,8 +1,8 @@
-import { InsertResult } from 'typeorm';
+import { InsertResult } from 'typeorm'
 
-import { dataSource } from '../../db';
-import { messageSchema } from './messages.schema';
-import { IMessagesRepository, MessageData, MessagesRepositoryResults } from './messages.types';
+import { dataSource } from '../../db'
+import { MessageModel } from './messages.model'
+import { IMessagesRepository, MessageData, MessagesRepositoryResults } from './messages.types'
 
 class MessagesRepository implements IMessagesRepository {
   async create (messageData: MessageData): Promise<MessagesRepositoryResults> {
@@ -10,7 +10,7 @@ class MessagesRepository implements IMessagesRepository {
       const messageInserted: InsertResult = await dataSource
         .createQueryBuilder()
         .insert()
-        .into(messageSchema)
+        .into(MessageModel)
         .values([{ text: messageData.text as string }])
         .execute()
       const success: boolean = !!messageInserted.identifiers
@@ -33,7 +33,7 @@ class MessagesRepository implements IMessagesRepository {
   async getAll (): Promise<MessagesRepositoryResults> {
     try {
       const messagesFound = await dataSource
-        .getRepository(messageSchema)
+        .getRepository(MessageModel)
         .createQueryBuilder('messages')
         .getMany()
       const success: boolean = !!messagesFound

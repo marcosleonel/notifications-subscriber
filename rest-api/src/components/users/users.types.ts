@@ -1,3 +1,5 @@
+import type { Request, Response } from 'express'
+
 export type UserData = {
   id?: string | undefined | unknown
   name: string
@@ -23,10 +25,11 @@ export type UserRepositoryResults = {
 
 export interface IUsersRepository {
   create: (data: UserData) => Promise<UserRepositoryResults>
+  findAll: () => Promise<UserRepositoryResults>
   findByCategories: (categories: string[]) => Promise<UserRepositoryResults>
 }
 
-export interface IUserController {
-  getByCategory: Function
-  add: Function
+export interface IUsersController {
+  create: (req: Request, res: Response) => Promise<Response>
+  getByCategory: (req: Request, res: Response) => Promise<Response>
 }
